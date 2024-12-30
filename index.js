@@ -19,15 +19,14 @@ async function iterate(array) {
     
     // Un appel API avec un délai de 2 secondes
     const data = await new Promise(resolve => {
-      setTimeout(resolve, 2000);
-    });
-    
+      setTimeout(() => resolve("Données simulées"), 2000); // Ajout d'une valeur à la promesse
+    })
     console.log("Obtention de données à partir de l'API", data);
   }
 
 
   setTimeout(() => {
-    console.log("Test de la tâche 2 :");
+    console.log("\nAttendre l'appel :");  //=> Le \n permet de commencer la sortie de la tâche sur une nouvelle ligne.
     waitCall();
   }, 6000);
 
@@ -35,7 +34,7 @@ async function iterate(array) {
 
   
   // Tâche 3 : Gérer les erreurs :
-  async function waitCall() {
+  async function waitCallError() {
     try {
       console.log("Début de l'appel API...");
       
@@ -57,8 +56,8 @@ async function iterate(array) {
   }
   
   setTimeout(() => {
-    console.log("\nTest de la tâche 3 :");
-    waitCall();
+    console.log("\nGérer les erreurs:");
+    waitCallError();
   }, 9000);
   
   
